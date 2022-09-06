@@ -1,0 +1,6 @@
+{
+  "prettier.disableLanguages": ["javascript", "typescript"],
+  "eslint.autoFixOnSave": false,
+  "tsserver.formatOnType": false,
+  "coc.preferences.formatOnType": false
+}
