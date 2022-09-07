@@ -14,3 +14,7 @@
 	program = gpg2
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
+[format]
+	signoff = true
