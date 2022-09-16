@@ -1,3 +1,37 @@
-#!/usr/bin/env node
-const fs = require("node:fs");
-const path = require("node:path");
+#!/usr/bin/env bash
+set -x
+
+# Install globaly files
+cp -r global/.config ~/
+cp -r global/.zshrc ~/
+
+# Android Termux
+if echo $HOME | grep -q "/data/data/com.termux"; then
+  apt update
+  apt install -y zsh nodejs git gpg gh golang neovim wget curl neofetch jq clang make htop unzip zip tsu screen
+  cp -rf linux/.termux ~/
+  cp -rf linux/neofetch ~/.config/
+
+# Gnu/Linux
+elif [[ $OSTYPE == "linux-gnu" ]]; then
+  sudo apt update
+  sudo apt install -y neovim git zsh wget curl neofetch jq clang make htop unzip zip  screen
+  wget -qO- https://raw.githubusercontent.com/Sirherobrine23/DebianNodejsFiles/main/debianInstall.sh | sudo bash
+  cp -rf linux/neofetch ~/.config/
+
+# End
+fi
+
+if ![[ -d "~/.oh-my-zsh/" ]]; then
+  chsh -s $(which zsh)||('export SHELL=`which zsh`'; echo '[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l') > ~/.bashrc
+  yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  sed -e 's|ZSH_THEME=".*"|ZSH_THEME="strug"|g' -i ~/.zshrc
+  sed -e 's|plugins=(.*)|plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)|g' -i ~/.zshrc
+fi
+
+if ![[ -d "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]];then
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
+if ![[ -d "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]];then
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+fi
