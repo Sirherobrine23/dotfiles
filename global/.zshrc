@@ -68,12 +68,14 @@ ZSH_THEME="strug"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+VSCODE=code-insiders
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions sudo git gh golang vscode npm node httpie adb docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 # User config
