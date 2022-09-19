@@ -22,16 +22,16 @@ elif [[ $OSTYPE == "linux-gnu" ]]; then
 # End
 fi
 
-if ![[ -d "~/.oh-my-zsh/" ]]; then
+if [[ -d "~/.oh-my-zsh/" ]]; then
   chsh -s $(which zsh)||('export SHELL=`which zsh`'; echo '[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l') > ~/.bashrc
   yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  sed -e 's|ZSH_THEME=".*"|ZSH_THEME="strug"|g' -i ~/.zshrc
-  sed -e 's|plugins=(.*)|plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)|g' -i ~/.zshrc
+else
+  omz update
 fi
 
-if ![[ -d "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]];then
+if [[ -d "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]];then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
-if ![[ -d "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]];then
+if [[ -d "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]];then
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 fi

@@ -1,5 +1,3 @@
-screen -dmS sshServer sshd
-
 #
 # f you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -28,7 +26,7 @@ ZSH_THEME="strug"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode auto      # update automatically without asking
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
@@ -75,13 +73,18 @@ VSCODE=code-insiders
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting zsh-autosuggestions sudo git gh golang vscode npm node httpie adb docker docker-compose kubectl)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions sudo git gh golang vscode npm node httpie adb systemd docker docker-compose kubectl)
 
 source $ZSH/oh-my-zsh.sh
 # User config
 export EDITOR="nvim"
 alias nano="${EDITOR}"
 export GPG_TTY="$(tty)"
-export DOCKER_HOST="tcp://docker.sirherobrine23.org:2375"
-export DOCKER_TLS_VERIFY=1
-export DOCKER_CERT_PATH="$HOME/.DockerCert/"
+
+if [[ -e "~/.env.sh" ]]; then
+  source .env.sh
+fi
+
+#export DOCKER_HOST="tcp://docker.sirherobrine23.org:2375"
+#export DOCKER_TLS_VERIFY=1
+#export DOCKER_CERT_PATH="$HOME/.DockerCert/"
