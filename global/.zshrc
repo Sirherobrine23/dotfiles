@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="rgm"
+ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -80,11 +80,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 alias nano="${EDITOR}"
 export GPG_TTY="$(tty)"
+alias itautec="wol -v CA:07:2D:F4:A2:0D"
 
 if [[ -e "~/.env.sh" ]]; then
   source .env.sh
 fi
-
-#export DOCKER_HOST="tcp://docker.sirherobrine23.org:2375"
-#export DOCKER_TLS_VERIFY=1
-#export DOCKER_CERT_PATH="$HOME/.DockerCert/"
