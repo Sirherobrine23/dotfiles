@@ -66,14 +66,30 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-VSCODE=code-insiders
+# VSCODE=code-insiders
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(git docker kubectl zsh-syntax-highlighting zsh-autosuggestions)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-syntax-highlighting zsh-autosuggestions sudo git gh golang vscode npm node httpie adb systemd docker docker-compose kubectl)
+plugins=(
+  #zsh-syntax-highlighting
+  zsh-autosuggestions
+  sudo
+  git
+  gh
+  golang
+  #vscode
+  npm
+  node
+  httpie
+  adb
+  systemd
+  docker
+  docker-compose
+  kubectl
+)
 
 source $ZSH/oh-my-zsh.sh
 # User config
@@ -81,7 +97,7 @@ export EDITOR="nvim"
 alias nano="${EDITOR}"
 export GPG_TTY="$(tty)"
 alias itautec="wol -v CA:07:2D:F4:A2:0D"
-
+alias reload_zsh="exec zsh"
 if [[ -e "~/.env.sh" ]]; then
   source .env.sh
 fi

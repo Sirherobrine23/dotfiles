@@ -23,7 +23,7 @@ elif [[ $OSTYPE == "linux-gnu" ]]; then
 fi
 
 if [[ ! -d "~/.oh-my-zsh/" ]]; then
-  chsh -s $(which zsh)||('export SHELL=`which zsh`'; echo '[ -z "$ZSH_VERSION" ] && exec "$SHELL" -l') > ~/.bashrc
+  alias chsh=""
   yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
