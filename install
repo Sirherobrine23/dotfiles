@@ -7,16 +7,20 @@ cp -r global/.zshrc $HOME/
 
 # Android Termux
 if echo $HOME | grep -q "/data/data/com.termux"; then
-  apt update
-  apt install -y zsh nodejs git gnupg gh golang neovim wget curl neofetch jq clang make htop unzip zip tsu screen
+  if [[ -z "$IGNORE_INSTALL" ]];then
+    apt update
+    apt install -y zsh nodejs git gnupg gh golang neovim wget curl neofetch jq clang make htop unzip zip tsu screen
+  fi
   cp -rf linux/.termux $HOME/
   cp -rf linux/neofetch $HOME/.config/
 
 # Gnu/Linux
-elif [[ $OSTYPE == "linux-gnu" ]]; then
-  sudo apt update
-  sudo apt install -y neovim git zsh wget curl neofetch jq clang make htop unzip zip  screen
-  wget -qO- https://raw.githubusercontent.com/Sirherobrine23/DebianNodejsFiles/main/debianInstall.sh | sudo bash
+elif command -v apt &> /dev/null; then
+  if [[ -z "$IGNORE_INSTALL" ]];then
+    sudo apt update
+    sudo apt install -y neovim git zsh wget curl neofetch jq clang make htop unzip zip screen
+    if ! command -v node &> /dev/null; then wget -qO- https://raw.githubusercontent.com/Sirherobrine23/DebianNodejsFiles/main/debianInstall.sh | sudo bash; fi
+  fi
   cp -rf linux/neofetch $HOME/.config/
 
 # End
