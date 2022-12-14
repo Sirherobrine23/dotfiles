@@ -1,13 +1,12 @@
 [credential "https://github.com"]
 	helper = 
-	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/data/data/com.termux/files/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [user]
 	name = Matheus Sampaio Queiroga
 	email = srherobrine20@gmail.com
-	signingkey = BCABC615AF0870F7391EF03CE5544C60802E38C0
 [commit]
 	gpgsign = true
 [gpg]
